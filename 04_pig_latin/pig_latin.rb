@@ -18,7 +18,7 @@ def translate_word(word)
   else
     new_word = move_consonant(word) + "ay"
   end
-  #will delete this for next push
+  #will delete this for next push actually i'll leave it
   # if word.start_with?("a")
   #   new_word = word + "ay"
   # elsif word.start_with?("e")
@@ -52,5 +52,3 @@ def move_consonant(word)
   end
 transformed_word = word_array.join + suffix.join
 end
-
-# p translate("cherry")
