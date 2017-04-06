@@ -9,16 +9,28 @@ def translate(word)
     new_word = word + "ay"
   elsif word.start_with?("u")
     new_word = word + "ay"
+  elsif word.start_with?("y")
+    new_word = word + "ay"
   else
-    move_consonant(word)
+    new_word = move_consonant(word) + "ay"
   end
 end
 
 def move_consonant(word)
+  vowels = ["a", "e", "i", "o", "u", "y"]
   word_array = word.split("")
-  while word_array[0].downcase != "a" || "e" || "i" || "o" || "u"
-    
-
+  suffix = []
+  until vowels.include?(word_array[0])
+    if word_array[0] == "q" && word_array[1] =="u"
+      suffix << word_array[0]
+      suffix << word_array[1]
+      2.times {word_array.delete_at(0)}
+    else
+      suffix << word_array[0]
+      word_array.delete_at(0)
+    end
   end
+transformed_word = word_array.join + suffix.join
+end
 
-translate("cherry")
+p translate("cherry")
