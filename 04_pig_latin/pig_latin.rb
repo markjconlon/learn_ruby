@@ -1,19 +1,39 @@
-def translate(word)
-  if word.start_with?("a")
-    new_word = word + "ay"
-  elsif word.start_with?("e")
-    new_word = word + "ay"
-  elsif word.start_with?("i")
-    new_word = word + "ay"
-  elsif word.start_with?("o")
-    new_word = word + "ay"
-  elsif word.start_with?("u")
-    new_word = word + "ay"
-  elsif word.start_with?("y")
+def translate(message)
+  array = message.split(' ')
+  new_array = []
+  if array.length == 1
+    return translate_word(array[0])
+  else
+    array.each do |word|
+      new_array << translate_word(word)
+    end
+    return new_array.join(" ")
+  end
+end
+
+def translate_word(word)
+  vowels = ["a", "e", "i", "o", "u", "y"]
+  if vowels.include?(word[0])
     new_word = word + "ay"
   else
     new_word = move_consonant(word) + "ay"
   end
+  #will delete this for next push
+  # if word.start_with?("a")
+  #   new_word = word + "ay"
+  # elsif word.start_with?("e")
+  #   new_word = word + "ay"
+  # elsif word.start_with?("i")
+  #   new_word = word + "ay"
+  # elsif word.start_with?("o")
+  #   new_word = word + "ay"
+  # elsif word.start_with?("u")
+  #   new_word = word + "ay"
+  # elsif word.start_with?("y")
+  #   new_word = word + "ay"
+  # else
+  #   new_word = move_consonant(word) + "ay"
+  # end
 end
 
 def move_consonant(word)
@@ -33,4 +53,4 @@ def move_consonant(word)
 transformed_word = word_array.join + suffix.join
 end
 
-p translate("cherry")
+# p translate("cherry")
