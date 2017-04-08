@@ -20,4 +20,13 @@ class Temperature
       (fahrenheit - 32) * 5/9.0
     end
   end
+
+  def self.in_fahrenheit(temp)
+    temperature = self.new({:f => temp})
+  end
+
+  def self.in_celsius(temp)
+    temperature = self.new({:f => temp})
+  end
+
 end
