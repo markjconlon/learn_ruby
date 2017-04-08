@@ -30,3 +30,15 @@ class Temperature
   end
 
 end
+
+class Celsius < Temperature
+  def initialize(temp)
+    @temp_hash = {:c => temp}
+  end
+end
+
+class Fahrenheit < Temperature
+  def initialize(temp)
+    @temp_hash = {:f => temp}
+  end
+end
