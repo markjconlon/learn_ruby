@@ -1,24 +1,25 @@
 class Temperature
+
+  attr_reader :temp_hash
+
   def initialize(temp_hash)
     @temp_hash = temp_hash
   end
 
   def to_fahrenheit
-    if @temp_hash[:f] != nil
-      return @temp_hash[:f]
-    else
-      celsius = @temp_hash[:c]
-      (celsius * 9/5.0) + 32
+    key_array= self.temp_hash.keys
+    if key_array.include?(:f)
+      return self.temp_hash[:f]
     end
+    self.temp_hash[:c] = (self.temp_hash[:c] * 9.0/5.0) + 32
   end
 
   def to_celsius
-    if @temp_hash != nil
-      return @temp_hash[:c]
-    else
-      fahrenheit = @temp_hash[:f]
-      (fahrenheit - 32) * 5/9.0
+    key_array= self.temp_hash.keys
+    if key_array.include?(:c)
+      return self.temp_hash[:c]
     end
+      self.temp_hash[:f] = ((self.temp_hash[:f]) - 32) * 5.0/9.0
   end
 
   def self.in_fahrenheit(temp)
@@ -26,7 +27,7 @@ class Temperature
   end
 
   def self.in_celsius(temp)
-    temperature = self.new({:f => temp})
+    temperature = self.new({:c => temp})
   end
 
 end
